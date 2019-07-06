@@ -30,16 +30,20 @@ function dispGifs() {
             let gifImage = $(`<img src=${clickData[i].images.fixed_height_still.url}/>`);
             gifDiv.append(gifImage);
             let gifMove = $(`<img src=${clickData[i].images.fixed_height.url}/>`);
+            gifMove.attr("play-me");
             gifDiv.append(gifMove);
+            gifMove.hide();
             $("#gifs-disp").prepend(gifDiv);
         }
-    
     });
 }
 
-function toggleGif() {
-
-}
+// function playGif() {
+//     let gifToPlay = $(this).attr("play-me");
+//     gifToPlay.on("click", function(){
+//         gifToPlay.show();
+//     });
+// }
 
 $("#add-emo").on("click", function(event){
     event.preventDefault();
