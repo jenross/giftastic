@@ -12,4 +12,30 @@ function dispButtons() {
     }
 }
 
+function dispGifs() {
+    let emotion = $(this).attr("emo-name");
+    let queryURL = "https://api.giphy.com/v1/gifs/search?q="+ emotion +"&api_key=lisr1iKG3zVF4Rv8GnH70wMpOhwT2rIl&limit=10";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        let clickData = response.data;
+        console.log(response.data);
+        let gifDiv = $("<div class='gifs'>");
+        let rating = $(`<p> Rating: ${response.data.rating} </p>`); 
+        gifDiv.append(rating);
+        $("#gifs-disp").prepend(gifDiv);
+    });
+}
+
+$("#add-emo").on("click", function(event){
+    event.preventDefault();
+    let newGif = $("#emo-input").val().trim();
+    topics.push(newGif);
+    dispButtons();
+});
+
+$(document).on("click", ".emo-btn", dispGifs);
+
 dispButtons();
