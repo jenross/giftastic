@@ -25,14 +25,20 @@ function dispGifs() {
         console.log(response.data);
         for (let i = 0; i < clickData.length; i++) {
             let gifDiv = $("<div class='gifs'>");
-            let rating = $(`<p> Rating: ${response.data[i].rating} </p>`); 
+            let rating = $(`<p> Rating: ${clickData[i].rating} </p>`); 
             gifDiv.append(rating);
-            let gifImage = $(`<img ${response.data[i].images.fixed_height_still.url}>`);
+            let gifImage = $(`<img src=${clickData[i].images.fixed_height_still.url}/>`);
             gifDiv.append(gifImage);
+            let gifMove = $(`<img src=${clickData[i].images.fixed_height.url}/>`);
+            gifDiv.append(gifMove);
             $("#gifs-disp").prepend(gifDiv);
         }
     
     });
+}
+
+function toggleGif() {
+
 }
 
 $("#add-emo").on("click", function(event){
