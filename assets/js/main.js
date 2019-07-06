@@ -20,12 +20,18 @@ function dispGifs() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+        $("#gifs-disp").empty();
         let clickData = response.data;
         console.log(response.data);
-        let gifDiv = $("<div class='gifs'>");
-        let rating = $(`<p> Rating: ${response.data.rating} </p>`); 
-        gifDiv.append(rating);
-        $("#gifs-disp").prepend(gifDiv);
+        for (let i = 0; i < clickData.length; i++) {
+            let gifDiv = $("<div class='gifs'>");
+            let rating = $(`<p> Rating: ${response.data[i].rating} </p>`); 
+            gifDiv.append(rating);
+            let gifImage = $(`<img ${response.data[i].images.fixed_height_still.url}>`);
+            gifDiv.append(gifImage);
+            $("#gifs-disp").prepend(gifDiv);
+        }
+    
     });
 }
 
