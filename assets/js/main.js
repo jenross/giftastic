@@ -19,7 +19,7 @@ function dispGifs() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).done(function(response) {
         $("#gifs-disp").empty();
         let clickData = response.data;
         console.log(response.data);
@@ -27,23 +27,30 @@ function dispGifs() {
             let gifDiv = $("<div class='gifs'>");
             let rating = $(`<p> Rating: ${clickData[i].rating} </p>`); 
             gifDiv.append(rating);
-            let gifImage = $(`<img src=${clickData[i].images.fixed_height_still.url}/>`);
+            let gifStill = clickData[i].images.fixed_height_still.url;
+            let gifPlay = clickData[i].images.fixed_height.url;
+            let gifImage = $("<img>").addClass("each-gif");
+            gifImage.attr("src", gifStill);
+            gifImage.attr("data-play", gifPlay);
+            gifImage.attr("data-stop", gifStill);
             gifDiv.append(gifImage);
-            let gifMove = $(`<img src=${clickData[i].images.fixed_height.url}/>`);
-            gifMove.attr("play-me");
-            gifDiv.append(gifMove);
-            gifMove.hide();
             $("#gifs-disp").prepend(gifDiv);
         }
     });
 }
 
-// function playGif() {
-//     let gifToPlay = $(this).attr("play-me");
-//     gifToPlay.on("click", function(){
-//         gifToPlay.show();
-//     });
-// }
+$(document).on("click", ".each-gif", function(){
+    let gifStatus = $(this).attr("data-state");
+
+    if(gifStatus === "stop") {
+        $(this).attr("src", ($(this).data("stop")));
+        $(this).attr("data-state", "play");
+    } else {
+        $(this).attr("src", ($(this).data("play")));
+        $(this).attr("data-state", "stop");
+    }
+});
+
 
 $("#add-emo").on("click", function(event){
     event.preventDefault();
