@@ -3,5 +3,11 @@
 }
 
 body {
-    
+    background: url('../images/blue-bkgrnd.jpg') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: white; 
 }
