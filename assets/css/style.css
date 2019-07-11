@@ -8,6 +8,26 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Barriecito', cursive;
     color: white; 
+}
+
+h1 {
+    font-size: 50px; 
+    border: 2px groove white; 
+    padding: 20px; 
+}
+
+.emo-btn:hover, #add-emo:hover {
+    background-color: lightgray; 
+}
+
+p {
+    font-size: 22px; 
+    /* border-bottom: 1px dotted white;  */
+    padding: 10px;  
+}
+
+.each-gif {
+    border: 2px groove grey; 
 }

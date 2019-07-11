@@ -6,6 +6,7 @@ function dispButtons() {
     for (let i = 0; i < topics.length; i++) {
         let t = $("<button>");
         t.addClass("emo-btn");
+        t.addClass("btn btn-light mt-2 mx-1");
         t.attr("emo-name", topics[i]);
         t.text(topics[i]);
         $("#disp-btns").append(t);
