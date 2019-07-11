@@ -26,6 +26,7 @@ function dispGifs() {
         for (let i = 0; i < clickData.length; i++) {
             let gifDiv = $("<div class='gifs'>");
             let rating = $(`<p> Rating: ${clickData[i].rating} </p>`); 
+            rating.addClass("my-3");
             gifDiv.append(rating);
             let gifStill = clickData[i].images.fixed_height_still.url;
             let gifPlay = clickData[i].images.fixed_height.url;
