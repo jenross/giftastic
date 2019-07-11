@@ -6,7 +6,7 @@ function dispButtons() {
     for (let i = 0; i < topics.length; i++) {
         let t = $("<button>");
         t.addClass("emo-btn");
-        t.addClass("btn btn-light mt-2 mx-1");
+        t.addClass("btn btn-light mt-3 mx-1");
         t.attr("emo-name", topics[i]);
         t.text(topics[i]);
         $("#disp-btns").append(t);
@@ -27,11 +27,11 @@ function dispGifs() {
         for (let i = 0; i < clickData.length; i++) {
             let gifDiv = $("<div class='gifs'>");
             let rating = $(`<p> Rating: ${clickData[i].rating} </p>`); 
-            rating.addClass("my-3");
+            rating.addClass("my-2");
             gifDiv.append(rating);
             let gifStill = clickData[i].images.fixed_height_still.url;
             let gifPlay = clickData[i].images.fixed_height.url;
-            let gifImage = $("<img>").addClass("each-gif");
+            let gifImage = $("<img>").addClass("each-gif mx-2");
             gifImage.attr("src", gifStill);
             gifImage.attr("data-state", "still");
             gifImage.attr("data-play", gifPlay);
