@@ -19,7 +19,7 @@ function dispGifs() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).done(function(response) {
+    }).then(function(response) {
         $("#gifs-disp").empty();
         let clickData = response.data;
         console.log(response.data);
@@ -31,6 +31,7 @@ function dispGifs() {
             let gifPlay = clickData[i].images.fixed_height.url;
             let gifImage = $("<img>").addClass("each-gif");
             gifImage.attr("src", gifStill);
+            gifImage.attr("data-state", "still");
             gifImage.attr("data-play", gifPlay);
             gifImage.attr("data-stop", gifStill);
             gifDiv.append(gifImage);
@@ -42,12 +43,12 @@ function dispGifs() {
 $(document).on("click", ".each-gif", function(){
     let gifStatus = $(this).attr("data-state");
 
-    if(gifStatus === "stop") {
-        $(this).attr("src", ($(this).data("stop")));
+    if(gifStatus === "still") {
+        $(this).attr("src", $(this).attr("data-play"));
         $(this).attr("data-state", "play");
     } else {
-        $(this).attr("src", ($(this).data("play")));
-        $(this).attr("data-state", "stop");
+        $(this).attr("src", $(this).attr("data-stop"));
+        $(this).attr("data-state", "still");
     }
 });
 
