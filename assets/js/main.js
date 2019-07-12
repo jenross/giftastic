@@ -5,8 +5,7 @@ function dispButtons() {
 
     for (let i = 0; i < topics.length; i++) {
         let t = $("<button>");
-        t.addClass("emo-btn");
-        t.addClass("btn btn-light mt-3 mx-1");
+        t.addClass("emo-btn btn btn-light mt-3 mx-1");
         t.attr("emo-name", topics[i]);
         t.text(topics[i]);
         $("#disp-btns").append(t);
@@ -15,7 +14,7 @@ function dispButtons() {
 
 function dispGifs() {
     let emotion = $(this).attr("emo-name");
-    let queryURL = "https://api.giphy.com/v1/gifs/search?q="+ emotion +"&api_key=lisr1iKG3zVF4Rv8GnH70wMpOhwT2rIl&limit=10";
+    const queryURL = "https://api.giphy.com/v1/gifs/search?q="+ emotion +"&api_key=lisr1iKG3zVF4Rv8GnH70wMpOhwT2rIl&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -60,6 +59,7 @@ $("#add-emo").on("click", function(event){
     let newGif = $("#emo-input").val().trim();
     topics.push(newGif);
     dispButtons();
+    $("#emo-input").val("");
 });
 
 $(document).on("click", ".emo-btn", dispGifs);
